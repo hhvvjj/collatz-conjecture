@@ -1,0 +1,374 @@
+%------------------------------------------------------------------------------
+% The Embedded Structure of Collatz Conjecture
+%------------------------------------------------------------------------------
+\documentclass{jams-l}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{xca}[theorem]{Exercise}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\numberwithin{equation}{section}
+
+\newcommand{\abs}[1]{\lvert#1\rvert}
+
+\newcommand{\blankbox}[2]{%
+  \parbox{\columnwidth}{\centering
+    \setlength{\fboxsep}{0pt}%
+    \fbox{\raisebox{0pt}[#2]{\hspace{#1}}}%
+  }%
+}
+
+\begin{document}
+
+    \title{The Embedded Structure of Collatz Conjecture}
+    \author{J. Hernandez}
+    \email{271314\_[a\_t]\_pm.me}
+    %\date{January 22, 2023.}
+    \keywords{General Mathematics, Number Theory}
+
+    \begin{abstract}
+        Do Collatz sequences share a common structure? If so, does it prove that, from any initial value $n$, Collatz sequences always reach value $1$? This paper tries to answer these two questions disclosing the embedded pattern present in any Collatz sequence.
+    \end{abstract}
+    
+    \maketitle
+
+    \section{The Embedded Structure}
+        The well known Collatz conjecture is a function $f: \mathbb{N} \longrightarrow \mathbb{N}$ oscillating between its $n/2$ and $3n+1$ branches respectively,  based on $n$ parity.
+        \begin{definition}
+            Let $C$ be any sequence computed using $f(n)$ function:
+            \begin{equation}
+                C = \{ c_1,..., c_{k-1}, c_{k},...c_n \; | \; c \in \mathbb{N}\}
+            \end{equation}
+        \end{definition}
+        \begin{lemma}
+            Any Collatz sequence $C$ can be unequivocally transformed using just eighteen pairs.
+        \end{lemma}
+    	\begin{proof}
+    		Using $\mathbb{Z}/2\mathbb{Z}$ to select proper branch from $f(n)$ function and using $\mathbb{Z}/9\mathbb{Z}$ to reduce $f(n$) results to $\{\overline{0}_9, \overline{1}_9, \overline{2}_9, \overline{3}_9, \overline{4}_9, \overline{5}_9, \overline{6}_9, \overline{7}_9, \overline{8}_9\}$ elements, following eighteen combinations, $|\;\mathbb{Z}/2\mathbb{Z}\;|\times|\;\mathbb{Z}/9\mathbb{Z}\;|$, can be determined for any $n$ value:
+    		\begin{align}
+    			n\;mod\;9\;=\;0\;\land\;n\;mod\;2\;=\;0\;&\longrightarrow\;f(n)\;mod\;9\;=\;0\\
+    			n\;mod\;9\;=\;0\;\land\;n\;mod\;2\;=\;1\;&\longrightarrow\;f(n)\;mod\;9\;=\;1\\
+    			n\;mod\;9\;=\;1\;\land\;n\;mod\;2\;=\;0\;&\longrightarrow\;f(n)\;mod\;9\;=\;5\\
+    			n\;mod\;9\;=\;1\;\land\;n\;mod\;2\;=\;1\;&\longrightarrow\;f(n)\;mod\;9\;=\;4\\
+    			n\;mod\;9\;=\;2\;\land\;n\;mod\;2\;=\;0\;&\longrightarrow\;f(n)\;mod\;9\;=\;1\\
+    			n\;mod\;9\;=\;2\;\land\;n\;mod\;2\;=\;1\;&\longrightarrow\;f(n)\;mod\;9\;=\;7\\
+    			n\;mod\;9\;=\;3\;\land\;n\;mod\;2\;=\;0\;&\longrightarrow\;f(n)\;mod\;9\;=\;6\\
+    			n\;mod\;9\;=\;3\;\land\;n\;mod\;2\;=\;1\;&\longrightarrow\;f(n)\;mod\;9\;=\;1\\
+    			n\;mod\;9\;=\;4\;\land\;n\;mod\;2\;=\;0\;&\longrightarrow\;f(n)\;mod\;9\;=\;2\\
+    			n\;mod\;9\;=\;4\;\land\;n\;mod\;2\;=\;1\;&\longrightarrow\;f(n)\;mod\;9\;=\;4\\
+    			n\;mod\;9\;=\;5\;\land\;n\;mod\;2\;=\;0\;&\longrightarrow\;f(n)\;mod\;9\;=\;7\\
+    			n\;mod\;9\;=\;5\;\land\;n\;mod\;2\;=\;1\;&\longrightarrow\;f(n)\;mod\;9\;=\;7\\
+    			n\;mod\;9\;=\;6\;\land\;n\;mod\;2\;=\;0\;&\longrightarrow\;f(n)\;mod\;9\;=\;3\\
+    			n\;mod\;9\;=\;6\;\land\;n\;mod\;2\;=\;1\;&\longrightarrow\;f(n)\;mod\;9\;=\;1\\
+    			n\;mod\;9\;=\;7\;\land\;n\;mod\;2\;=\;0\;&\longrightarrow\;f(n)\;mod\;9\;=\;8\\
+    			n\;mod\;9\;=\;7\;\land\;n\;mod\;2\;=\;1\;&\longrightarrow\;f(n)\;mod\;9\;=\;4\\
+    			n\;mod\;9\;=\;8\;\land\;n\;mod\;2\;=\;0\;&\longrightarrow\;f(n)\;mod\;9\;=\;4\\
+    			n\;mod\;9\;=\;8\;\land\;n\;mod\;2\;=\;1\;&\longrightarrow\;f(n)\;mod\;9\;=\;7
+    		\end{align}
+    		Since $\forall\;n\;\in\;\mathbb{N}\;\rightarrow\;f(n)\;\in\;\mathbb{N}$, it is possible to apply above equations on two consecutive elements $\{c_{k},c_{k+1}\}\;\in\;C$:
+    		\begin{align}
+    			c_{k+1}\;mod\;9=0\rightarrow (c_{k}\;mod\;9=0)\land (c_{k}\;mod\;2=0) & \Longrightarrow \;\;c_{k}\;mod\;9 = 0&\\
+    			c_{k+1}\;mod\;9=1\rightarrow (c_{k}\;mod\;9=6)\land (c_{k}\;mod\;2=1) & \Longrightarrow \;\;c_{k}\;mod\;9 = 6&\\
+    			c_{k+1}\;mod\;9=1\rightarrow (c_{k}\;mod\;9=0)\land (c_{k}\;mod\;2=1) & \Longrightarrow \;\;c_{k}\;mod\;9 = 0&\\
+    			c_{k+1}\;mod\;9=1\rightarrow (c_{k}\;mod\;9=3)\land (c_{k}\;mod\;2=1) & \Longrightarrow \;\;c_{k}\;mod\;9 = 3&\\
+    			c_{k+1}\;mod\;9=1\rightarrow (c_{k}\;mod\;9=2)\land (c_{k}\;mod\;2=0) & \Longrightarrow \;\;c_{k}\;mod\;9 = 2&\\
+    			c_{k+1}\;mod\;9=2\rightarrow (c_{k}\;mod\;9=4)\land (c_{k}\;mod\;2=0) & \Longrightarrow \;\;c_{k}\;mod\;9 = 4&\\
+    			c_{k+1}\;mod\;9=3\rightarrow (c_{k}\;mod\;9=6)\land (c_{k}\;mod\;2=0) & \Longrightarrow \;\;c_{k}\;mod\;9 = 6&\\
+    			c_{k+1}\;mod\;9=4\rightarrow (c_{k}\;mod\;9=8)\land (c_{k}\;mod\;2=0) & \Longrightarrow \;\;c_{k}\;mod\;9 = 8&\\
+    			c_{k+1}\;mod\;9=4\rightarrow (c_{k}\;mod\;9=7)\land (c_{k}\;mod\;2=1) & \Longrightarrow \;\;c_{k}\;mod\;9 = 7&\\
+    			c_{k+1}\;mod\;9=4\rightarrow (c_{k}\;mod\;9=4)\land (c_{k}\;mod\;2=1) & \Longrightarrow \;\;c_{k}\;mod\;9 = 4&\\
+    			c_{k+1}\;mod\;9=4\rightarrow (c_{k}\;mod\;9=1)\land (c_{k}\;mod\;2=1) & \Longrightarrow \;\;c_{k}\;mod\;9 = 1&\\
+    			c_{k+1}\;mod\;9=5\rightarrow (c_{k}\;mod\;9=1)\land (c_{k}\;mod\;2=0) & \Longrightarrow \;\;c_{k}\;mod\;9 = 1&\\
+    			c_{k+1}\;mod\;9=6\rightarrow (c_{k}\;mod\;9=3)\land (c_{k}\;mod\;2=0) & \Longrightarrow \;\;c_{k}\;mod\;9 = 3&\\
+    			c_{k+1}\;mod\;9=7\rightarrow (c_{k}\;mod\;9=8)\land (c_{k}\;mod\;2=1) & \Longrightarrow \;\;c_{k}\;mod\;9 = 8&\\
+    			c_{k+1}\;mod\;9=7\rightarrow (c_{k}\;mod\;9=5)\land (c_{k}\;mod\;2=0) & \Longrightarrow \;\;c_{k}\;mod\;9 = 5&\\
+    			c_{k+1}\;mod\;9=7\rightarrow (c_{k}\;mod\;9=5)\land (c_{k}\;mod\;2=1) & \Longrightarrow \;\;c_{k}\;mod\;9 = 5&\\
+    			c_{k+1}\;mod\;9=7\rightarrow (c_{k}\;mod\;9=2)\land (c_{k}\;mod\;2=1) & \Longrightarrow \;\;c_{k}\;mod\;9 = 2&\\
+    			c_{k+1}\;mod\;9=8\rightarrow (c_{k}\;mod\;9=7)\land (c_{k}\;mod\;2=0) & \Longrightarrow \;\;c_{k}\;mod\;9 = 7&
+    		\end{align}
+    		Derived from above equations, Generic Pairs represent any Collatz Pair $\{c_{k},c_{k+1}\}\in C$ using $m$-multiplicities; for equation (1.38), $m=1$ must be configured as base case instead of $m=0$, since $\{0,0\}$ is not a valid Collatz pair due to $f(n) \in \mathbb{N}$ definition. As follows:
+    		\begin{align}
+    			\{(3\times3\times(1\times2\times m+0)) + 0,\;(1\times3\times3\times(1\times1\times m+0)) + 0\},\;m \geq 1\\
+    			\{(3\times3\times(1\times2\times m+1)) + 6,\;(1\times3\times3\times(3\times2\times m+5)) + 1\},\;m \geq 0\\
+    			\{(3\times3\times(1\times2\times m+1)) + 0,\;(3\times3\times3\times(1\times2\times m+1)) + 1\},\;m \geq 0\\
+    			\{(1\times3\times(3\times2\times m+0)) + 3,\;(1\times3\times3\times(3\times2\times m+1)) + 1\},\;m \geq 0\\
+    			\{(3\times3\times(1\times2\times m+0)) + 2,\;(1\times3\times3\times(1\times1\times m+0)) + 1\},\;m \geq 0\\
+    			\{(3\times3\times(1\times2\times m+0)) + 4,\;(1\times3\times3\times(1\times1\times m+0)) + 2\},\;m \geq 0\\
+    			\{(3\times3\times(1\times2\times m+0)) + 6,\;(1\times3\times3\times(1\times1\times m+0)) + 3\},\;m \geq 0\\
+       			\{(3\times3\times(1\times2\times m+0)) + 8,\;(1\times3\times3\times(1\times1\times m+0)) + 4\},\;m \geq 0\\
+                \{(3\times3\times(1\times2\times m+0)) + 7,\;(1\times3\times3\times(3\times2\times m+2)) + 4\},\;m \geq 0\\
+    			\{(3\times3\times(1\times2\times m+1)) + 4,\;(1\times3\times3\times(3\times2\times m+4)) + 4\},\;m \geq 0\\
+    			\{(3\times3\times(1\times2\times m+0)) + 1,\;(1\times3\times3\times(3\times2\times m+0)) + 4\},\;m \geq 0\\
+    			\{(3\times3\times(1\times2\times m+1)) + 1,\;(1\times3\times3\times(1\times1\times m+0)) + 5\},\;m \geq 0\\
+    			\{(3\times3\times(1\times2\times m+1)) + 3,\;(1\times3\times3\times(1\times1\times m+0)) + 6\},\;m \geq 0\\
+    			\{(3\times3\times(1\times2\times m+1)) + 8,\;(1\times3\times3\times(3\times2\times m+5)) + 7\},\;m \geq 0
+       		\end{align}
+    		\begin{align}
+                \{(3\times3\times(1\times2\times m+1)) + 5,\;(1\times3\times3\times(1\times1\times m+0)) + 7\},\;m \geq 0\\
+    			\{(3\times3\times(1\times2\times m+0)) + 5,\;(1\times3\times3\times(3\times2\times m+1)) + 7\},\;m \geq 0\\
+    			\{(3\times3\times(1\times2\times m+1)) + 2,\;(1\times3\times3\times(3\times2\times m+3)) + 7\},\;m \geq 0\\
+    			\{(3\times3\times(1\times2\times m+1)) + 7,\;(1\times3\times3\times(1\times1\times m+0)) + 8\},\;m \geq 0
+    		\end{align}
+    		Determining Essential Pairs can be easily done by assigning base values for $m$ multiplicity parameter on above Generic Pairs:\\
+    		\begin{minipage}[b]{.47\textwidth}
+    			\begin{alignat}{2}
+    				m = 1\;\land\;(1.38) &\rightarrow \{18, 9\}\\
+    				m = 0\;\land\;(1.39) &\rightarrow \{15, 46\}\\
+    				m = 0\;\land\;(1.40) &\rightarrow \{9, 28\}\\
+    				m = 0\;\land\;(1.41) &\rightarrow \{3, 10\}\\
+    				m = 0\;\land\;(1.42) &\rightarrow \{2, 1\}\\
+    				m = 0\;\land\;(1.43) &\rightarrow \{4, 2\}\\
+    				m = 0\;\land\;(1.44) &\rightarrow \{6, 3\}\\
+    				m = 0\;\land\;(1.45) &\rightarrow \{8, 4\}\\
+    				m = 0\;\land\;(1.46) &\rightarrow \{7, 22\}
+    			\end{alignat}
+    		\end{minipage}
+    		\quad
+    		\begin{minipage}[b]{.47\textwidth}
+    			\begin{alignat}{2}
+    				m = 0\;\land\;(1.47) &\rightarrow \{13, 40\}\\
+    				m = 0\;\land\;(1.48) &\rightarrow \{1, 4\}\\
+    				m = 0\;\land\;(1.49) &\rightarrow \{10, 5\}\\
+    				m = 0\;\land\;(1.50) &\rightarrow \{12, 6\}\\
+    				m = 0\;\land\;(1.51) &\rightarrow \{17, 52\}\\
+    				m = 0\;\land\;(1.52) &\rightarrow \{14, 7\}\\
+    				m = 0\;\land\;(1.53) &\rightarrow \{5, 16\}\\
+    				m = 0\;\land\;(1.54) &\rightarrow \{11, 34\}\\
+    				m = 0\;\land\;(1.55) &\rightarrow \{16, 8\}
+    			\end{alignat}
+    		\end{minipage}
+    		\\At this point, if presented Generic Pairs (or their base case representation Essential Pairs) would not be able express Collatz Pairs, it would necessarily mean that $n\;mod\;2\;\neq\;\{\overline{0}_2, \overline{1}_2\}$ or $n\;mod\;9\;\neq\;\{\overline{0}_9, \overline{1}_9, \overline{2}_9, \overline{3}_9, \overline{4}_9, \overline{5}_9, \overline{6}_9, \overline{7}_9, \overline{8}_9\}$, but any $c_{k} \in \mathbb{N}$ due to $f(n)$ definition. Additionally, note that any Essential Pair is compliant with $f(n)$ branches.
+    		\begin{example}
+    			Let us first obtain the Collatz sequence values for $f(17)$:
+    			\begin{align}	
+    				f(17)=&\;\{17, 52, 26, 13, 40, 20, 10, 5, 16, 8, 4, 2, 1\}
+    			\end{align}
+       			Let us group them as Collatz Pairs:
+    			\begin{align}	
+    				f(17)=&\;\{17,52\},\{52, 26\},\{26, 13\},\{13, 40\},\{40, 20\},\{20, 10\}, \\&\nonumber \;\{10,5\},\{5, 16\},\{16, 8\},\{8, 4\},\{4, 2\},\{2, 1\}
+    			\end{align}
+    			At this point, let us represent these Collatz Pairs with Generic Pairs and $m$-multiplicities:
+    			\begin{align}	
+    				&\{{(3\times3\times(1\times2\times0+1))+8,\;(1\times3\times3\times(3\times2\times0+5))+7}\}\\
+    				&\{{(3\times3\times(1\times2\times2+1))+7,\;(1\times3\times3\times(1\times1\times2+0))+8}\}\\
+    				&\{{(3\times3\times(1\times2\times1+0))+8,\;(1\times3\times3\times(1\times1\times1+0))+4}\}\\
+    				&\{{(3\times3\times(1\times2\times0+1))+4,\;(1\times3\times3\times(3\times2\times0+4))+4}\}\\
+    				&\{{(3\times3\times(1\times2\times2+0))+4,\;(1\times3\times3\times(1\times1\times2+0))+2}\}\\
+    				&\{{(3\times3\times(1\times2\times1+0))+2,\;(1\times3\times3\times(1\times1\times1+0))+1}\}\\
+    				&\{{(3\times3\times(1\times2\times0+1))+1,\;(1\times3\times3\times(1\times1\times0+0))+5}\}\\
+    				&\{{(3\times3\times(1\times2\times0+0))+5,\;(1\times3\times3\times(3\times2\times0+1))+7}\}\\
+    				&\{{(3\times3\times(1\times2\times0+1))+7,\;(1\times3\times3\times(1\times1\times0+0))+8}\}\\
+    				&\{{(3\times3\times(1\times2\times0+0))+8,\;(1\times3\times3\times(1\times1\times0+0))+4}\}\\
+    				&\{{(3\times3\times(1\times2\times0+0))+4,\;(1\times3\times3\times(1\times1\times0+0))+2}\}
+    			\end{align}
+       			\begin{align}
+                   	&\{{(3\times3\times(1\times2\times0+0))+2,\;(1\times3\times3\times(1\times1\times0+0))+1}\}
+        		\end{align}
+    			Finally, Generic Pairs are represented using Essential Pairs and $m$-multiplicities:
+    			\begin{align}
+    				f(17)= &\;\{\{17,52,0\},\{16,8,2\},\{8,4,1\},\{13,40,0\},\{4,2,2\},\{2,1,1\},\\
+    				\nonumber &\;\{10,5,0\},\{5,16,0\},\{16,8,0\},\{8,4,0\},\{4,2,0\},\{2,1,0\}\}
+    			\end{align}
+                This is the multiplicities sequence for $f(17)$:
+    			\begin{align}
+    				m= \{0, 2, 1, 0, 2, 1, 0, 0, 0, 0, 0, 0\}
+    			\end{align}
+            At this moment, it is still possible to revert the original Collatz sequence using Generic Pairs equations and the multiplicities as entry point.
+    		\end{example}
+    	\end{proof}
+
+    \section{The Essential Pairs Details}
+    	The capability to represent any $C$ using a limited subset of pairs, eases pattern recognition. Let us analyze exposed Essential Pairs.
+    	\begin{lemma}
+    		Any Essential Pair can be expressed using in turn Essential Pairs, being only \{2,1\} pair common to all these representations.
+    	\end{lemma}
+    	\begin{proof}
+    		List below contains all the Essential Pairs, enumerating required ones to represent themselves. As depicted, only \{2,1\} pair is present on any representation. Additionally, this pair has an unique property: it is the only self-contained one; it is named Root Pair.
+    		\begin{align}
+    			\textbf{\{18, 9\}} \rightarrow &\{18, 9\},\{17, 52\},\{16, 8\},\{14, 7\},\{13, 40\},\{11, 34\},\\ \nonumber &\{10, 5\},\{9, 28\},\{8, 4\},\{7, 22\},\{4, 2\},\{2, 1\}\\
+                \textbf{\{15, 46\}} \rightarrow &\{17, 52\},\{16, 8\},\{15, 46\},\{10, 5\},\{8, 4\},\{4, 2\},\{2, 1\}\\
+       			\textbf{\{9, 28\}} \rightarrow &\{17, 52\},\{16, 8\},\{14, 7\},\{13, 40\},\{11, 34\},\{9, 28\},\\ \nonumber &\{8, 4\},\{7, 22\},\{5, 16\},\{4, 2\},\{2, 1\}\\
+                \textbf{\{3, 10\}} \rightarrow &\{16, 8\},\{10, 5\},\{8, 4\},\{5, 16\},\{4, 2\},\{3, 10\},\{2, 1\}\\
+                \textbf{\{2, 1\}} \rightarrow &\{2, 1\}\\
+                \textbf{\{4, 2\}} \rightarrow &\{4, 2\},\{2, 1\}\\
+                \textbf{\{6, 3\}} \rightarrow &\{16, 8\},\{10, 5\},\{8, 4\},\{6, 3\}\{5, 16\},\{4, 2\},\{3,10\},\{2, 1\}\\
+                \textbf{\{8, 4\}} \rightarrow &\{8, 4\},\{4, 2\},\{2, 1\}\\
+                \textbf{\{7, 22\}} \rightarrow &\{17, 52\},\{16, 8\},\{13, 40\},\{11, 34\},\{10, 5\},\{8, 4\},\{7, 22\},\\ \nonumber &\{5, 16\},\{4, 2\},\{2, 1\}\\
+                \textbf{\{13, 40\}} \rightarrow &\{16, 8\},\{13, 40\},\{10, 5\},\{8, 4\},\{5, 16\},\{4, 2\},\{2, 1\}\\
+                \textbf{\{1, 4\}} \rightarrow &\{1, 4\},\{4, 2\},\{2, 1\}\\
+                \textbf{\{10, 5\}} \rightarrow &\{16, 8\},\{10, 5\},\{8, 4\},\{5, 16\},\{4, 2\},\{2, 1\}\\
+                \textbf{\{12, 6\}} \rightarrow &\{16, 8\},\{12, 6\},\{10, 5\},\{8, 4\},\{6, 3\},\{5, 16\},\{4, 2\},\\ \nonumber &\{3, 10\},\{2, 1\}\\
+                \textbf{\{17, 52\}} \rightarrow &\{17, 52\},\{16, 8\},\{13, 40\},\{10, 5\},\{8, 4\},\{5, 16\},\{4, 2\},\\ \nonumber &\{2, 1\}
+            \end{align}
+    		\begin{align}
+                \textbf{\{14, 7\}} \rightarrow &\{17, 52\},\{16, 8\},\{14, 7\},\{13, 40\},\{11, 34\},\{10, 5\},\\ \nonumber &\{8, 4\},\{7, 22\},\{5, 16\},\{4, 2\},\{2, 1\}\\
+    			\textbf{\{5, 16\}} \rightarrow &\{16, 8\},\{8, 4\},\{5, 16\},\{4, 2\},\{2, 1\}\\
+    			\textbf{\{11, 34\}} \rightarrow &\{17, 52\},\{16, 8\},\{13, 40\},\{11, 34\},\{10, 5\},\{8, 4\},\{5, 16\},\\ \nonumber &\{4, 2\},\{2, 1\}\\
+    			\textbf{\{16, 8\}} \rightarrow &\{16, 8\},\{8, 4\},\{4, 2\},\{2, 1\}
+       		\end{align}
+    	\end{proof}
+    
+    \section{The Essential Pairs Relationships}
+        \begin{lemma}
+            Any Collatz sequence, represented by its Essential Pairs and $m$-multiplicities, is accepted by a finite-state machine.
+        \end{lemma}
+	\begin{proof}
+		It is possible to describe a finite-state machine ready to digest any Collatz sequence $C$ expressed using Essential Pairs and $m$-multiplicities. Note that multiplicities are flattened by $m mod 2$, covering $f(n)$ branches. The FSM accepts the sequence on $210$ suffix. As follows:
+		\begin{align*}
+			M =&\;(Q, \Sigma, \delta, q_{0}, F)\\
+			Q =&\;\{q_{0},q_{1},q_{2},q_{3},q_{4},q_{5},q_{6},q_{7},q_{8},q_{9},q_{10},q_{11},q_{12},q_{13},q_{14},q_{15},q_{16},q_{17},q_{18}\}\\
+			\Sigma =&\;\{140,141,210,211,3100,3101,420,421,5160,5161,630,631,7220,7221,\\
+			&\;840,841,9280,9281,1050,1051,11340,11341,1260,1261,13400,13401,\\
+			&\;1470,1471,15460,15461,1680,1681,17520,17521,1890,1891\}\\
+			q_{0} =&\;q_{0}\\
+			F =&\;q_{1}\\
+			\delta \;=&\;see\;transitions\;below
+		\end{align*}
+		\begin{minipage}[b]{.45\textwidth}
+			\begin{align}
+				\delta(q_{0}, 140) = q_{4}\\
+				\delta(q_{0}, 141) = q_{4}\\
+				\delta(q_{0}, 210) = q_{1}\\
+				\delta(q_{0}, 211) = q_{10}\\
+				\delta(q_{0}, 3100) = q_{10}\\
+				\delta(q_{0}, 3101) = q_{10}\\
+				\delta(q_{0}, 420) = q_{2}\\
+				\delta(q_{0}, 421) = q_{11}\\
+				\delta(q_{0}, 5160) = q_{16}\\
+				\delta(q_{0}, 5161) = q_{16}\\		
+				\delta(q_{0}, 630) = q_{3}\\
+				\delta(q_{0}, 631) = q_{12}\\
+				\delta(q_{0}, 7220) = q_{4}\\
+				\delta(q_{0}, 7221) = q_{4}\\
+				\delta(q_{0}, 840) = q_{4}
+			\end{align}
+		\end{minipage}
+		\quad\quad\quad
+		\begin{minipage}[b]{.45\textwidth}
+			\begin{align}
+				\delta(q_{0}, 841) = q_{13}\\
+				\delta(q_{0}, 9280) = q_{10}\\
+				\delta(q_{0}, 9281) = q_{10}\\
+				\delta(q_{0}, 1050) = q_{5}\\
+				\delta(q_{0}, 1051) = q_{14}\\
+				\delta(q_{0}, 11340) = q_{16}\\
+				\delta(q_{0}, 11341) = q_{16}\\
+				\delta(q_{0}, 1260) = q_{6}\\
+				\delta(q_{0}, 1261) = q_{15}\\
+				\delta(q_{0}, 13400) = q_{4}\\
+				\delta(q_{0}, 13401) = q_{4}\\
+				\delta(q_{0}, 1470) = q_{7}\\
+				\delta(q_{0}, 1471) = q_{16}\\
+				\delta(q_{0}, 15460) = q_{10}\\
+				\delta(q_{0}, 15461) = q_{10}
+			\end{align}
+		\end{minipage}
+		\newpage
+		\begin{minipage}[b]{.45\textwidth}
+			\begin{align}
+   				\delta(q_{0}, 1680) = q_{8}\\
+   				\delta(q_{0}, 1681) = q_{17}\\
+				\delta(q_{0}, 17520) = q_{16}\\
+				\delta(q_{0}, 17521) = q_{16}\\
+				\delta(q_{0}, 1890) = q_{18}\\
+				\delta(q_{0}, 1891) = q_{9}\\
+                \delta(q_{1}, 140) = q_{4}\\
+				\delta(q_{1}, 141) = q_{4}\\
+				\delta(q_{2}, 210) = q_{1}\\
+				\delta(q_{2}, 211) = q_{10}\\
+				\delta(q_{3}, 3100) = q_{10}\\
+				\delta(q_{3}, 3101) = q_{10}\\
+				\delta(q_{4}, 420) = q_{2}\\
+				\delta(q_{4}, 421) = q_{11}\\
+				\delta(q_{5}, 5160) = q_{16}\\
+				\delta(q_{5}, 5161) = q_{16}\\
+				\delta(q_{6}, 630) = q_{3}\\
+				\delta(q_{6}, 631) = q_{12}\\
+				\delta(q_{7}, 7220) = q_{4}\\
+				\delta(q_{7}, 7221) = q_{4}\\
+				\delta(q_{8}, 840) = q_{4}
+			\end{align}
+		\end{minipage}
+		\quad\quad
+		\begin{minipage}[b]{.45\textwidth}
+			\begin{align}
+				\delta(q_{8}, 841) = q_{13}\\
+				\delta(q_{9}, 9280) = q_{10}\\
+				\delta(q_{9}, 9281) = q_{10}\\
+				\delta(q_{10}, 1050) = q_{5}\\
+				\delta(q_{10}, 1051) = q_{14}\\
+				\delta(q_{11}, 11340) = q_{16}\\
+				\delta(q_{11}, 11341) = q_{16}\\
+				\delta(q_{12}, 1260) = q_{6}\\
+				\delta(q_{12}, 1261) = q_{15}\\
+				\delta(q_{13}, 13400) = q_{4}\\
+				\delta(q_{13}, 13401) = q_{4}\\
+				\delta(q_{14}, 1470) = q_{7}\\
+				\delta(q_{14}, 1471) = q_{16}\\
+				\delta(q_{15}, 15460) = q_{10}\\
+				\delta(q_{15}, 15461) = q_{10}\\
+				\delta(q_{16}, 1680) = q_{8}\\
+				\delta(q_{16}, 1681) = q_{17}\\
+				\delta(q_{17}, 17520) = q_{16}\\
+				\delta(q_{17}, 17521) = q_{16}\\
+				\delta(q_{18}, 1890) = q_{18}\\
+				\delta(q_{18}, 1891) = q_{9}
+				\end{align}
+			\end{minipage}
+			The ability to represent any Collatz series using a limited subset of pairs eases the pattern recognition. As per 1.2, any Collatz Pair can be expressed as an Essential Pair and a $m$-multiplicity, being the multiplicities size (converging to zero) proportional to the Collatz Pair represented. Additionally, has been shown in 2.1 that any representation always uses the Root Pair and $m = 0$ as a final pair.
+		\begin{example}
+			Based on (1.88), $f(17)$ sequence transformation accepted for $M$ is:
+				\begin{align}
+					f(17)= &\;\{17520,1680,841,13400,420,211,1050,5160,1680,840,420,210\}
+				\end{align}
+			Acceptance path, in this case, is as follows:
+			\begin{align*}
+				q_{0} \rightarrow q_{16} \rightarrow q_{8} \rightarrow q_{13} \rightarrow q_{4} \rightarrow q_{2} \rightarrow q_{10} \rightarrow q_{5} \rightarrow 
+				q_{16} \rightarrow q_{8} \rightarrow q_{4} \rightarrow q_{2} \rightarrow q_{1}
+			\end{align*}
+		\end{example}
+    \end{proof}
+    Since any Collatz sequence $C$ can be grouped in pairs, any of these pairs can be reworked as depicted during this paper and that final transformation is always be digested by the $M$ acceptor on the suffix \{210\}, it is possible to state that Collatz conjecture is correct.
+    Future job can be done validating this procedure on other sequences, studying relationship between Collatz sequences with same Essential Pairs or $m$-multiplicities, for instance.
+
+    \newpage
+
+    \bibliographystyle{amsplain}
+    \begin{thebibliography}{10}
+    
+    	\bibitem{1}
+    	Srimani, P. \& Nasir, S., A Textbook on Automata Theory, Foundation Books, 2007. ISBN8175965452
+    	
+    	\bibitem{2}
+    	Hopcroft, J. E. \& Motwani, R. \& Ullman, J. D., Introduction to Automata Theory, Languages and Computation, Pearson, 2007. ISBN0321455363
+    	
+    	\bibitem{3}
+    	Lagarias, J. C., The 3x+1 problem and its generalizations, 1985. The American Mathematical Monthly Vol 92 (1): 3–23.
+    	
+    	\bibitem{4}
+    	Padilla, V., 3x + 1 Problem. Syracuse Conjecture, 2019. https://arxiv.org/pdf/1910.05622.pdf
+    	
+    	\bibitem{5}
+    	Tao, T.,  Almost all orbits of the Collatz map attain almost bounded values, 2021. https://arxiv.org/pdf/1909.03562.pdf
+    	
+    	\bibitem{6}
+    	Le, Q. \& Smith, E., Observations on cycles in a variant of the Collatz Graph, 2021. https://arxiv.org/pdf/2109.01180.pdf
+    	
+    	\bibitem{7}
+    	Eliahou, S. \& Simonetto, R., Is the Syracuse falling time bounded by 12?, 2021. https://arxiv.org/pdf/2107.11160.pdf
+    	
+    	\bibitem{8}	Matthews, K. R. \& Watts, A. M., A Generalization of Hasses's Generalization of the Syracuse Algorithm, 1984, Acta Arithmetica. 43, 167-175.
+    	
+    	\bibitem{9} Terras R., A stopping time problem on the positive integers, 1976, Acta Arithmetica 30, 241–252.
+    
+    \end{thebibliography}
+
+\end{document}
+
