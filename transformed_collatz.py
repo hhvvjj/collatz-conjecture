@@ -198,7 +198,7 @@ def nodeQ2(c):
 	final = " "
 	if (c == 210):
 		final = " final "
-	print("\t [+] From node q12 to" + final + "node " + switcher.get(c) + " using transition " + str(c))
+	print("\t [+] From node q2 to" + final + "node " + switcher.get(c) + " using transition " + str(c))
 	return switcher.get(c)
 
 # Node q3
